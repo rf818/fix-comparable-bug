@@ -1,1 +1,1 @@
-src/main/java/com/github/hcsp/polymorphism/Point.java
+src/main/java/com/github/hcsp/polymorphism/User.java
