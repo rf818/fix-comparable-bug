@@ -47,7 +47,12 @@ public class User implements Comparable<User> {
     /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
-        return name.compareTo(o.name);
+        if(name.compareTo(o.name) == 0) {
+            return id.compareTo(o.id);
+        }else {
+            return name.compareTo(o.name);
+        }
+
     }
 
     public static void main(String[] args) {
@@ -62,3 +67,13 @@ public class User implements Comparable<User> {
         System.out.println(treeSet.size());
     }
 }
+/**
+ * TreeMap的put方法会 更新已经存在key的value
+ * AbstractCollection addAll()
+ *              ---> TreeSet add()
+ *                      ---> TreeMap put()
+ *                              ---> Comparable compareTo()
+ *                                          ---> User implements Comparable
+ *                                                      ---> 最终会调用 User实现的 compareTo()
+ *
+ * */
