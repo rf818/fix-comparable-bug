@@ -18,6 +18,7 @@ public class UserTest {
                         new User(2000, "a"));
         List<String> expectedSortedNames = Arrays.asList("a", "a", "b", "z");
 
+        Assertions.assertEquals(0, new User(1, "a").compareTo(new User(1, "a")));
         Assertions.assertTrue(new User(1, "a").compareTo(new User(2, "b")) < 0);
         Assertions.assertTrue(new User(1, "b").compareTo(new User(2, "a")) > 0);
         Assertions.assertEquals(
