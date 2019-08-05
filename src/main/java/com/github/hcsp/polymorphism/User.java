@@ -44,10 +44,26 @@ public class User implements Comparable<User> {
         return id != null ? id.hashCode() : 0;
     }
 
+    // 方便查看集合中的对象打印结果
+    @Override
+    public String toString() {
+        return "{ id: " + this.id + ", name: " + this.name + " }";
+    }
+
     /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
-        return name.compareTo(o.name);
+        // 下面被注释了的就是有 bug 的实现
+        // return name.compareTo(o.name);
+
+        // 下面尝试修复bug，核心思想：全等时才可以放心被集合去重，而只是 name 相等，则不做排序调整
+        if (this.equals(o)) {
+            return 0;
+        } else if (name.equals(o.name)) {
+            return -1;
+        } else {
+            return name.compareTo(o.name); // 只会处理大于或小于
+        }
     }
 
     public static void main(String[] args) {
@@ -60,5 +76,6 @@ public class User implements Comparable<User> {
         TreeSet<User> treeSet = new TreeSet<>(users);
         // 为什么这里的输出是3？试着修复其中的bug
         System.out.println(treeSet.size());
+        System.out.println(treeSet);
     }
 }
