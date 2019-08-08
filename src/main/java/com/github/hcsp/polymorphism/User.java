@@ -33,10 +33,10 @@ public class User implements Comparable<User> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         User person = (User) o;
 
         return Objects.equals(id, person.id);
-
     }
 
     @Override
@@ -47,11 +47,7 @@ public class User implements Comparable<User> {
     /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
-        if (name==o.name) {
-            return id.compareTo(o.id);
-        }else {
-            return name.compareTo(o.name);
-        }
+        return name.compareTo(o.name);
     }
 
     public static void main(String[] args) {
