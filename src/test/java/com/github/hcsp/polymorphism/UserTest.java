@@ -38,9 +38,9 @@ public class UserTest {
         User a = new User(1, "zhangsan");
         User b = new User(2, "zhangsan");
         if (a.compareTo(b) < 0) {
-            Assertions.assertTrue(a.compareTo(b) > 0);
+            Assertions.assertTrue(b.compareTo(a) > 0);
         } else if (a.compareTo(b) > 0) {
-            Assertions.assertTrue(a.compareTo(b) < 0);
+            Assertions.assertTrue(b.compareTo(a) < 0);
         } else {
             Assertions.assertTrue(false);
         }
