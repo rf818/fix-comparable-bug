@@ -47,10 +47,16 @@ public class User implements Comparable<User> {
     /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
-        return name.compareTo(o.name);
+        if (this.name.equals(o.name)){
+            return this.id.compareTo(o.id);
+        }else
+            return name.compareTo(o.name);
     }
 
+
     public static void main(String[] args) {
+        User a =new User(1,"张三");
+        User b =new User(2,"张三");
         List<User> users =
                 Arrays.asList(
                         new User(100, "b"),
@@ -60,5 +66,7 @@ public class User implements Comparable<User> {
         TreeSet<User> treeSet = new TreeSet<>(users);
         // 为什么这里的输出是3？试着修复其中的bug
         System.out.println(treeSet.size());
+        System.out.println(a.compareTo(b));
+        System.out.println(b.compareTo(a));
     }
 }
