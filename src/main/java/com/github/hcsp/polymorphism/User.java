@@ -6,14 +6,10 @@ import java.util.Objects;
 import java.util.TreeSet;
 
 public class User implements Comparable<User> {
-    /**
-     * 用户ID，数据库主键，全局唯一
-     */
+    /** 用户ID，数据库主键，全局唯一 */
     private final Integer id;
 
-    /**
-     * 用户名
-     */
+    /** 用户名 */
     private final String name;
 
     public User(Integer id, String name) {
@@ -48,23 +44,10 @@ public class User implements Comparable<User> {
         return id != null ? id.hashCode() : 0;
     }
 
-    /**
-     * 老板说让我按照用户名排序
-     */
+    /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
-        int result = name.compareTo(o.name);
-        if (result == 0) {
-            if (id < o.id) {
-                return -1;
-            } else if (Objects.equals(id, o.id)) {
-                return 0;
-            } else {
-                return 1;
-            }
-        } else {
-            return result;
-        }
+        return name.compareTo(o.name);
     }
 
     public static void main(String[] args) {
