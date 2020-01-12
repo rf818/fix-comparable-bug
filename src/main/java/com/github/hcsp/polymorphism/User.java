@@ -27,7 +27,7 @@ public class User implements Comparable<User> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
+        if (this.id == o) {
             return true;
         }
         if (o == null || getClass() != o.getClass()) {
@@ -47,6 +47,10 @@ public class User implements Comparable<User> {
     /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
+        if(name.compareTo(o.name)==0)
+        {
+            return id.compareTo((o.id));
+        }
         return name.compareTo(o.name);
     }
 
