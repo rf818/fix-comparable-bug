@@ -1,6 +1,9 @@
 package com.github.hcsp.polymorphism;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.TreeSet;
 
 public class User implements Comparable<User> {
     /** 用户ID，数据库主键，全局唯一 */
@@ -44,8 +47,7 @@ public class User implements Comparable<User> {
     /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
-        int nameCompareResult = name.compareTo(o.name);
-        return nameCompareResult == 0 ? id.compareTo(o.id) : nameCompareResult;
+        return name.compareTo(o.name);
     }
 
     public static void main(String[] args) {
@@ -57,7 +59,6 @@ public class User implements Comparable<User> {
                         new User(2000, "a"));
         TreeSet<User> treeSet = new TreeSet<>(users);
         // 为什么这里的输出是3？试着修复其中的bug
-
         System.out.println(treeSet.size());
     }
 }
