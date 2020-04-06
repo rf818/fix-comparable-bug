@@ -6,10 +6,14 @@ import java.util.Objects;
 import java.util.TreeSet;
 
 public class User implements Comparable<User> {
-    /** 用户ID，数据库主键，全局唯一 */
+    /**
+     * 用户ID，数据库主键，全局唯一
+     */
     private final Integer id;
 
-    /** 用户名 */
+    /**
+     * 用户名
+     */
     private final String name;
 
     public User(Integer id, String name) {
@@ -44,11 +48,20 @@ public class User implements Comparable<User> {
         return id != null ? id.hashCode() : 0;
     }
 
-    /** 老板说让我按照用户名排序 */
+    /**
+     * 老板说让我按照用户名排序
+     */
+    //对于两个相等的元素，compare to 也不能返回0？
     @Override
     public int compareTo(User o) {
-        return name.compareTo(o.name);
+        if (name.compareTo(o.name) == 0){
+            return id.compareTo(o.id);
+        }else {
+            return name.compareTo(o.name);
+        }
     }
+//        return name.compareTo(o.name);
+//    }
 
     public static void main(String[] args) {
         List<User> users =
@@ -59,6 +72,8 @@ public class User implements Comparable<User> {
                         new User(2000, "a"));
         TreeSet<User> treeSet = new TreeSet<>(users);
         // 为什么这里的输出是3？试着修复其中的bug
+        //所以应该是要输出4
+        //这四个数字用户名一样的
         System.out.println(treeSet.size());
     }
 }
