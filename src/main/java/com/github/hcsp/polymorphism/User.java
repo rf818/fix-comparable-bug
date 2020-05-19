@@ -12,7 +12,8 @@ public class User implements Comparable<User> {
     /** 用户名 */
     private final String name;
 
-    public User(Integer id, String name) {
+    public  User(Integer id, String name) {
+
         this.id = id;
         this.name = name;
     }
@@ -47,6 +48,9 @@ public class User implements Comparable<User> {
     /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
+        if (name.compareTo(o.name) == 0){
+            return id.compareTo(o.id);
+        }
         return name.compareTo(o.name);
     }
 
