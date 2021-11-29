@@ -47,7 +47,14 @@ public class User implements Comparable<User> {
     /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
-        return name.compareTo(o.name);
+        int compare1 = name.compareTo(o.name);
+        int compare2 = id.compareTo(o.id);
+
+        if (compare1 != 0) return compare1;//先比较name
+        else{
+            if (compare2 != 0) return compare2;//后比较id。不影响name排序，但是id不同则返回不同
+            else return 0;
+        }
     }
 
     public static void main(String[] args) {
