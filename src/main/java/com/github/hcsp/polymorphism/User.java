@@ -5,16 +5,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.TreeSet;
 
-public class
-User implements Comparable<User> {
-    /**
-     * 用户ID，数据库主键，全局唯一
-     */
+public class User implements Comparable<User> {
+    /** 用户ID，数据库主键，全局唯一 */
     private final Integer id;
 
-    /**
-     * 用户名
-     */
+    /** 用户名 */
     private final String name;
 
     public User(Integer id, String name) {
@@ -49,24 +44,11 @@ User implements Comparable<User> {
         return id != null ? id.hashCode() : 0;
     }
 
-    /**
-     * 老板说让我按照用户名排序
-     */
+    /** 老板说让我按照用户名排序 */
     @Override
     public int compareTo(User o) {
-        int compare1 = name.compareTo(o.name);
-        int compare2 = id.compareTo(o.id);
-
-        if (compare1 != 0) return compare1;//先比较name
-        else{
-            if (compare2 != 0) return compare2;//后比较id。不影响name排序，但是id不同则返回不同
-            else return 0;
-        }
-
-        }
-
-
-
+        return name.compareTo(o.name);
+    }
 
     public static void main(String[] args) {
         List<User> users =
